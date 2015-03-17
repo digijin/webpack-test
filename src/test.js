@@ -1,3 +1,3 @@
-console.log("testfeing123");
+console.log("testing");
 
-console.log(require('./commonjs/index.coffee'));
+console.log(require('./commonjs/index'));

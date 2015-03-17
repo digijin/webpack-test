@@ -7,10 +7,13 @@ gulp.task 'default', ['startWebpack']
 gulp.task 'startWebpack', ->
 	compiler = webpack
 		# context: __dirname + "/src"
+		devtool: 'sourcemap'
+		debug: true
 		entry: './src/test.js'
 		output: 
 			path: __dirname + "/dist"
 			filename: 'bundle.js'
+			sourceMapFilename: "[file].map"
 		module:
 			loaders: [
 				test: /\.coffee$/
