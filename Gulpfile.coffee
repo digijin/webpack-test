@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 chalk = require 'chalk'
 webpack = require 'webpack'
+path = require 'path'
 
 gulp.task 'default', ['startWebpack']
 
@@ -20,11 +21,19 @@ gulp.task 'startWebpack', ->
 				loader: "coffee-loader"
 			]
 		resolve:
+			root: [
+				path.join(__dirname, "bower_components")
+			]
 			extensions: [
-				''
+				'' # required to get other exts working
 				'.coffee'
 				'.js'
 			]
+		plugins: [
+			new webpack.ResolverPlugin(
+				new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+			)
+		]
 			
 	compiler.run (err, stats) ->
 	watcher = compiler.watch 200, (err, stats) ->

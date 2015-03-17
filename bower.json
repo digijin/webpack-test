@@ -1,0 +1,20 @@
+{
+  "name": "webpack-test",
+  "version": "0.0.0",
+  "homepage": "https://github.com/digijin/webpack-test",
+  "authors": [
+    "James Smith <james@digijin.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.8.2"
+  }
+}
