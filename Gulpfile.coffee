@@ -2,10 +2,12 @@ gulp = require 'gulp'
 
 webpack = require 'webpack'
 
-gulp.task 'default', (cb) ->
+gulp.task 'default', ['startWebpack']
+
+gulp.task 'startWebpack', ->
 	compiler = webpack
-		context: __dirname + "/src"
-		entry: './test'
+		# context: __dirname + "/src"
+		entry: './src/test.js'
 		output: 
 			path: __dirname + "/dist"
 			filename: 'bundle.js'
@@ -14,11 +16,11 @@ gulp.task 'default', (cb) ->
 				test: /\.coffee$/
 				loader: "coffee-loader"
 			]
+		resolve:
+			root: __dirname + "/src"
 			
 	compiler.run (err, stats) ->
 	watcher = compiler.watch 200, (err, stats) ->
-		# console.log err#, stats
-		# cb()
 		console.log "build over"
 
 	# console.log watcher
