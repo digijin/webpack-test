@@ -9,7 +9,16 @@ gulp.task 'default', (cb) ->
 		output: 
 			path: __dirname + "/dist"
 			filename: 'bundle.js'
+		module:
+			loaders: [
+				test: /\.coffee$/
+				loader: "coffee-loader"
+			]
 			
 	compiler.run (err, stats) ->
-		console.log err, stats
-		cb()
+	watcher = compiler.watch 200, (err, stats) ->
+		# console.log err#, stats
+		# cb()
+		console.log "build over"
+
+	# console.log watcher
